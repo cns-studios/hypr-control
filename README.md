@@ -51,7 +51,7 @@ Use **Arrows to navigate** and **Enter to enter** menus. Press **ESC or q** to r
 
 _More comming soon_
 
-## Improvment and Platform Support
+## Improvement and Platform Support
 
 **Please submit ideas or changes requests in the GitHub Issues Tab**, this helps the project grow and maybe expand for other Systems.
 
