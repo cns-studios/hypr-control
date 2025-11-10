@@ -12,9 +12,8 @@ class HyprControl {
       title: 'Hyprland System Control'
     });
 
-    this.screen.key(['escape', 'q', 'C-c'], () => process.exit(0));
+    this.screen.key(['C-c'], () => process.exit(0));
     
-    this.createLayout();
     this.showMainMenu();
   }
 
@@ -40,8 +39,25 @@ class HyprControl {
     }
   }
 
+  clearScreen() {
+    if (this.mainBox) {
+      this.mainBox.destroy();
+    }
+    this.mainBox = blessed.box({
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      style: {
+      bg: 'black'
+      }
+    });
+    this.screen.append(this.mainBox);
+    this.screen.render();
+  }
+
   showMainMenu() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 1,
@@ -96,6 +112,10 @@ class HyprControl {
       ]
     });
 
+    menu.key(['escape', 'q'], () => {
+      process.exit(0);
+    });
+
     const footer = blessed.box({
       bottom: 0,
       left: 'center',
@@ -130,7 +150,7 @@ class HyprControl {
   }
 
   showMonitorSettings() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const monitors = this.getMonitors();
     
@@ -180,6 +200,12 @@ class HyprControl {
         'Set Primary Monitor',
         'Back'
       ]
+    });
+
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
     });
 
     const output = blessed.box({
@@ -337,7 +363,7 @@ class HyprControl {
   }
 
   showAudioControl() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -403,6 +429,12 @@ class HyprControl {
         'Switch Output Device',
         'Back'
       ]
+    });
+    
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
     });
 
     menu.on('select', (item, index) => {
@@ -507,7 +539,7 @@ class HyprControl {
   }
 
   showWifiManagement() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -575,6 +607,12 @@ class HyprControl {
         'Saved Connections',
         'Back'
       ]
+    });
+
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
     });
 
     menu.on('select', (item, index) => {
@@ -701,7 +739,7 @@ class HyprControl {
   }
 
   showBluetoothControl() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -765,6 +803,12 @@ class HyprControl {
         'Remove Device',
         'Back'
       ]
+    });
+
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
     });
 
     menu.on('select', (item, index) => {
@@ -940,7 +984,7 @@ class HyprControl {
   }
 
   showUserManagement() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -991,6 +1035,12 @@ class HyprControl {
       ]
     });
 
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
+    });
+
     menu.on('select', (item, index) => {
       switch(index) {
         case 0:
@@ -1024,7 +1074,7 @@ class HyprControl {
   }
 
   showSystemInfo() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -1053,6 +1103,7 @@ class HyprControl {
     });
 
     info.key(['escape', 'q'], () => {
+      this.mainBox.children.forEach(child => child.destroy());
       this.showMainMenu();
     });
 
@@ -1079,7 +1130,7 @@ ${this.execCommand('df -h | grep -E "^/dev"')}
   }
 
   showHyprlandConfig() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -1129,6 +1180,12 @@ ${this.execCommand('df -h | grep -E "^/dev"')}
         'Edit Config (default editor)',
         'Back'
       ]
+    });
+
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
     });
 
     menu.on('select', (item, index) => {
@@ -1181,7 +1238,7 @@ ${this.execCommand('df -h | grep -E "^/dev"')}
   }
 
   showPowerManagement() {
-    this.mainBox.children.forEach(child => child.destroy());
+    this.clearScreen();
 
     const title = blessed.box({
       top: 0,
@@ -1216,6 +1273,12 @@ ${this.execCommand('df -h | grep -E "^/dev"')}
         '🚪 Logout',
         '⬅️  Back'
       ]
+    });
+
+    menu.key(['escape', 'q'], () => {
+      menu.detach();
+      this.screen.render();
+      this.showMainMenu();
     });
 
     menu.on('select', (item, index) => {
