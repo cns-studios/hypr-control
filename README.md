@@ -25,7 +25,7 @@ chmod +x hypr-control.js
 
 **Run it** via
 
-- `hypr-control`
+- `./hypr-control`
 - `node hypr-control`
 - `npm start`
 
@@ -34,6 +34,22 @@ chmod +x hypr-control.js
 
 Use **Arrows to navigate** and **Enter to enter** menus. Press **ESC or q** to return to the Main Menu. `CTRL + C` to exit
 
+
+## Features
+
+**Color Scheme (should) adapt** to hyprland colors
+
+**Control and Change**
+- Monitor Settings
+- Audio
+- WiFi
+- Bluetooth
+- Users
+- See System Info
+- Hyprland Config Files
+- Power
+
+_More comming soon_
 
 ## Improvment and Platform Support
 
