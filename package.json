@@ -4,6 +4,7 @@
   "description": "",
   "main": "hypr-control.js",
   "scripts": {
+    "start": "node hypr-control.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
