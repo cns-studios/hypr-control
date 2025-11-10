@@ -25,7 +25,7 @@ chmod +x hypr-control.js
 
 **Run it** via
 
-- `hypr-control``
+- `hypr-control`
 - `node hypr-control`
 - `npm start`
 
